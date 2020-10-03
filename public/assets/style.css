@@ -1,0 +1,52 @@
+
+
+.wrapper {
+    margin: auto;
+    margin-top: 40px;
+    width:70%;
+    height:auto;
+    border:1px solid #ccc;
+    padding:40px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper .navigation-wrapper button {
+    width:130px;
+    height:40px;
+}
+
+.wrapper .navigation-wrapper {
+    margin:auto;
+}
+
+
+.container-title {
+    text-align: center;
+    margin: 60px;
+}
+.container-sub-title{
+    text-align: left;
+    margin: 60px;
+}
+
+.wrapper table {
+    margin:auto;
+    width:90%;
+    text-align: left;
+}
+
+.wrapper  table  th {
+    padding:10px;
+    border-bottom:1px solid #ccc;
+    text-align: left;
+}
+
+.wrapper  table  tbody td {
+    padding:10px;
+    border-bottom:1px solid #ccc;
+    text-align: left;
+}
+
+.wrapper  table  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }

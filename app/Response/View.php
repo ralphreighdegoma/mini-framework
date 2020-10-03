@@ -28,7 +28,7 @@ class View {
     public function view($path, $data) {
 
         $ext = ".php";
-        $parent = "..\app\View\\";
+        $parent = VIEW_PATH_INCLUDE;
         $path = $parent.$path.$ext;
         
 

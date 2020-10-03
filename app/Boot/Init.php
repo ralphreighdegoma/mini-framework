@@ -10,14 +10,12 @@ class Init {
 
     public function __construct() {
         $this->args = collect($_REQUEST);
-        $this->url_path = $_SERVER['REQUEST_URI'];
-
+        $this->url_path = strtok($_SERVER['REQUEST_URI'], "?");
         define("URI", $this->url_path);
-          
     }
 
     public function requestPipe() {
         $request = new Request($this->url_path);
-        return $request->gateway($this->url_path);
+        return $request;
     }   
 }

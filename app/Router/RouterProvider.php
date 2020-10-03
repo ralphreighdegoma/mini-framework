@@ -11,16 +11,9 @@ class RouterProvider {
     private $uri;
   
     public function __construct($uri) {
-        
-        $this->routes = array(
-            "/" => "HomeController@show",
-            "/home" => "HomeController@show",
-            "report" => "ReportController@report",
-            "/404" => "ErrorController@index",
-        );
-
+        require_once '../app/routes.php';
+        $this->routes = $routes;
         $this->uri = $uri;
-
     }
 
     public function process($path = null) {
@@ -38,7 +31,6 @@ class RouterProvider {
 
     public function routeExist() {
         $exist = array_key_exists($this->uri, $this->routes);
-     
         return !empty($exist);
     }
 
