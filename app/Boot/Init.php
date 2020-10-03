@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Boot;
-
-use App\Response;
+use App\Response\Request;
 
 class Init {
 
@@ -12,11 +11,13 @@ class Init {
     public function __construct() {
         $this->args = collect($_REQUEST);
         $this->url_path = $_SERVER['REQUEST_URI'];
+
+        define("URI", $this->url_path);
+          
     }
 
-   
-
     public function requestPipe() {
-        echo $this->url_path;
+        $request = new Request($this->url_path);
+        return $request->gateway($this->url_path);
     }   
 }

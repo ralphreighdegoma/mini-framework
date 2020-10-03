@@ -2,16 +2,17 @@
 
 namespace App\Response;
 
-
-use App\Router;
+use App\Router\RouterProvider;
 
 class Request {
 
-    public function __construct() {
-
+    public function __construct($uri) {
+        $this->gateway($uri);
     }
 
     public function gateway($uri) {
-        return Router::provider($uri);
+        $router = new RouterProvider($uri);
+        echo $router->go();
     }
+
 }
