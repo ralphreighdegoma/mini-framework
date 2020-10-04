@@ -13,7 +13,12 @@ class Player {
         $this->conn = new Connection();
     }
 
-    public function wherePromise($params) {
+    public function wherePromise($params = null) {
+
+        if(empty($params) || is_null($params)) {
+            return "";
+        } 
+
         $team = isset($params["team"]) ? $params["team"] : "";
         $position = isset($params["position"]) ? $params["position"] : "";
         $player = isset($params["player"]) ? $params["player"] : "";
@@ -38,7 +43,7 @@ class Player {
 
     }
 
-    public function getPlayers($params) {
+    public function getPlayers($params = null) {
 
         $where = $this->wherePromise($params);
 
@@ -49,8 +54,8 @@ class Player {
                 player_totals.minutes_played, 
                 player_totals.field_goals, 
                 player_totals.field_goals_attempted, 
-                player_totals.2pt_attempted, 
-                player_totals.2pt, 
+                player_totals.2pt_attempted as second_attempt, 
+                player_totals.2pt as two_points, 
                 player_totals.free_throws, 
                 player_totals.free_throws_attempted, 
                 player_totals.offensive_rebounds, 
@@ -67,8 +72,8 @@ class Player {
                 roster.nationality, 
                 roster.years_exp, 
                 roster.college, 
-                player_totals.3pt, 
-                player_totals.3pt_attempted, 
+                player_totals.3pt as three_points, 
+                player_totals.3pt_attempted as third_attempted, 
                 player_totals.steals, 
                 player_totals.blocks, 
                 player_totals.turnovers, 
@@ -100,8 +105,8 @@ class Player {
                 player_totals.minutes_played, 
                 player_totals.field_goals, 
                 player_totals.field_goals_attempted, 
-                player_totals.2pt_attempted, 
-                player_totals.2pt, 
+                player_totals.2pt_attempted as second_attempt, 
+                player_totals.2pt as two_points, 
                 player_totals.free_throws, 
                 player_totals.free_throws_attempted, 
                 player_totals.offensive_rebounds, 
@@ -118,8 +123,8 @@ class Player {
                 roster.nationality, 
                 roster.years_exp, 
                 roster.college, 
-                player_totals.3pt, 
-                player_totals.3pt_attempted, 
+                player_totals.3pt as three_points, 
+                player_totals.3pt_attempted as third_attempted, 
                 player_totals.steals, 
                 player_totals.blocks, 
                 player_totals.turnovers, 

@@ -17,8 +17,12 @@ class Report implements Export{
     }
 
     public function toXml() {
-        //header('Content-type: text/xml');
-        return $result = ArrayToXml::convert($this->data);
+        header('Content-type: text/xml');
+        $format = [];
+        foreach($this->data as $key => $data) {
+            $format["_".$key] =  $data;
+        }
+        return ArrayToXml::convert($format, "root");
     }
     public function toCsv() {
 

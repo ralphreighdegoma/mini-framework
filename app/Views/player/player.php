@@ -75,8 +75,8 @@
                             <td><?php echo $data["player"]["minutes_played"]; ?></td>
                             <td><?php echo $data["player"]["field_goals"]; ?></td>
                             <td><?php echo $data["player"]["field_goals_attempted"]; ?></td>
-                            <td><?php echo $data["player"]["3pt"]; ?></td>
-                            <td><?php echo $data["player"]["3pt_attempted"]; ?></td>
+                            <td><?php echo $data["player"]["three_points"]; ?></td>
+                            <td><?php echo $data["player"]["third_attempted"]; ?></td>
                         </tr>
                  
                 </tbody>
@@ -102,8 +102,8 @@
 
                 <tbody>
                         <tr>
-                            <td><?php echo $data["player"]["2pt"]; ?></td>
-                            <td><?php echo $data["player"]["2pt_attempted"]; ?></td>
+                            <td><?php echo $data["player"]["two_points"]; ?></td>
+                            <td><?php echo $data["player"]["second_attempt"]; ?></td>
                             <td><?php echo $data["player"]["free_throws"]; ?></td>
                             <td><?php echo $data["player"]["free_throws_attempted"]; ?></td>
                             <td><?php echo $data["player"]["offensive_rebounds"]; ?></td>

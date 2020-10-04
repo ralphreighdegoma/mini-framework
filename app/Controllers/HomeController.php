@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 use App\Response;
-use App\Models\Players;
+use App\Models\Player;
 
 class HomeController extends Controller{
 

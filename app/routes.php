@@ -5,7 +5,6 @@ $routes = array(
     //basic routes
     "/" => "HomeController@show",
     "/home" => "HomeController@show",
-    "/report" => "ReportController@report",
     "/player" => "PlayerController@show",
 
 
