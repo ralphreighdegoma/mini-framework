@@ -4,7 +4,7 @@ namespace App\Models;
 use App\Response\Request;
 use App\Database\Connection;
 
-class Players {
+class Player {
 
     public $conn;
     public $where = "";
@@ -13,7 +13,34 @@ class Players {
         $this->conn = new Connection();
     }
 
-    public function get() {
+    public function wherePromise($params) {
+        $team = isset($params["team"]) ? $params["team"] : "";
+        $position = isset($params["position"]) ? $params["position"] : "";
+        $player = isset($params["player"]) ? $params["player"] : "";
+
+        $where = "";
+        
+        if(!empty($team)) {
+            $where = " where team_code = $team "; 
+        }
+
+        if(!empty($position)) {
+            $where = !empty($where) ? $where." and " : $where;
+            $where = " where pos = $position "; 
+        }
+
+        if(!empty($player)) {
+            $where = !empty($where) ? $where." and " : $where;
+            $where = " where name = $player "; 
+        }
+
+        return $where;
+
+    }
+
+    public function getPlayers($params) {
+
+        $where = $this->wherePromise($params);
 
         $sql = "SELECT
                 player_totals.age, 
@@ -53,7 +80,10 @@ class Players {
                 LEFT JOIN
                 player_totals
                 ON 
-            roster.id = player_totals.player_id";
+            roster.id = player_totals.player_id
+            
+            $where
+            ";
 
 
         $players = $this->conn->get($sql);
@@ -97,7 +127,6 @@ class Players {
             FROM
                 roster
                 
-                
 
                 LEFT JOIN
                 player_totals
@@ -110,6 +139,31 @@ class Players {
         $players = $this->conn->first($sql);
 
         return $players;
+    }
+
+    public function playerStats($params) {
+
+        $where = $this->wherePromise($params);
+
+        $sql = "SELECT
+                    player_totals.*
+                FROM
+                    player_totals
+                    LEFT JOIN
+                    roster
+                    ON 
+                        player_totals.player_id = roster.id
+                    LEFT JOIN
+                    team
+                    ON 
+                        roster.team_code = team.`code`
+                        $where    
+                    ";
+
+
+        $stats = $this->conn->get($sql);
+
+        return $stats;
     }
 
 }

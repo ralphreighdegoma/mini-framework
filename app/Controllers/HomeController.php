@@ -8,9 +8,9 @@ class HomeController extends Controller{
 
     public function show() {
 
-        $players = new Players();
+        $players = new Player();
         
-        $data = ["players" => $players->get()];
+        $data = ["players" => $players->getPlayers()];
         return $this->response("home", $data);
     }   
 }
